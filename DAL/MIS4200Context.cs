@@ -13,7 +13,7 @@ namespace cn894815_mis4200.DAL
         public MIS4200Context() : base("name=DefaultConnection")
         {
             // this method is a 'constructor' and is called when a new context is created
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MIS4200Context, cn894815_mis4200.Migrations.MISContext.Configuration>("DetaultConnection"));
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MIS4200Context, cn894815_mis4200.Migrations.MISContext.Configuration>("DefaultConnection"));
 
         }
         public DbSet<Vet> Vets { get; set; }
