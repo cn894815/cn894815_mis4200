@@ -14,8 +14,12 @@ namespace cn894815_mis4200.DAL
             // this method is a 'constructor' and is called when a new context is created
 
         }
-        public DbSet<Orders> Orders { get; set; }
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Vet> Vets { get; set; }
+        public DbSet<Pet> Pets { get; set; }
+        public DbSet<PetDetail> PetDetails { get; set; }
+        public DbSet<Owner> Owners { get; set; }
+
+
 
     }
 }
