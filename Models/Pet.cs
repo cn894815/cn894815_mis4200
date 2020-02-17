@@ -11,9 +11,19 @@ namespace cn894815_mis4200.Models
         public string firstName { get; set; }
         public string lastName { get; set; }
 
+        public DateTime birthday { get; set; }
+
+        public string weight { get; set; }
+        public string breed { get; set; }
+
+
 
 
 
         public ICollection<PetDetail> PetDetail { get; set; }
+
+        public int ownerID { get; set; }
+
+        public virtual Owner Owner { get; set; }
     }
 }
