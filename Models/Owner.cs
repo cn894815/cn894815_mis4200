@@ -14,6 +14,6 @@ namespace cn894815_mis4200.Models
         public string phone { get; set; }
         public DateTime customerSince { get; set; }
 
-        public ICollection<PetDetail> PetDetail { get; set; }
+        public ICollection<Pet> Pets { get; set; }
     }
 }

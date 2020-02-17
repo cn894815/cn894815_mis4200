@@ -173,6 +173,7 @@
     <Compile Include="Controllers\OwnersController.cs" />
     <Compile Include="Controllers\PetsController.cs" />
     <Compile Include="Controllers\VetsController.cs" />
+    <Compile Include="Controllers\VisitsController.cs" />
     <Compile Include="DAL\MIS4200Context.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -264,6 +265,11 @@
     <Content Include="Views\Owners\Details.cshtml" />
     <Content Include="Views\Owners\Edit.cshtml" />
     <Content Include="Views\Owners\Index.cshtml" />
+    <Content Include="Views\Visits\Create.cshtml" />
+    <Content Include="Views\Visits\Delete.cshtml" />
+    <Content Include="Views\Visits\Details.cshtml" />
+    <Content Include="Views\Visits\Edit.cshtml" />
+    <Content Include="Views\Visits\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,107 +11,116 @@ using cn894815_mis4200.Models;
 
 namespace cn894815_mis4200.Controllers
 {
-    public class PetsController : Controller
+    public class VisitsController : Controller
     {
         private MIS4200Context db = new MIS4200Context();
 
-        // GET: Pets
+        // GET: Visits
         public ActionResult Index()
         {
-            return View(db.Pets.ToList());
+            var visits = db.Visits.Include(v => v.Pet).Include(v => v.Vet);
+            return View(visits.ToList());
         }
 
-        // GET: Pets/Details/5
+        // GET: Visits/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pet pet = db.Pets.Find(id);
-            if (pet == null)
+            Visits visits = db.Visits.Find(id);
+            if (visits == null)
             {
                 return HttpNotFound();
             }
-            return View(pet);
+            return View(visits);
         }
 
-        // GET: Pets/Create
+        // GET: Visits/Create
         public ActionResult Create()
         {
+            ViewBag.petID = new SelectList(db.Pets, "petID", "firstName");
+            ViewBag.vetID = new SelectList(db.Vets, "vetID", "firstName");
             return View();
         }
 
-        // POST: Pets/Create
+        // POST: Visits/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "petID,firstName,lastName,birthday,weight,breed,ownerID")] Pet pet)
+        public ActionResult Create([Bind(Include = "visitId,vetID,petID,dateTime,description")] Visits visits)
         {
             if (ModelState.IsValid)
             {
-                db.Pets.Add(pet);
+                db.Visits.Add(visits);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(pet);
+            ViewBag.petID = new SelectList(db.Pets, "petID", "firstName", visits.petID);
+            ViewBag.vetID = new SelectList(db.Vets, "vetID", "firstName", visits.vetID);
+            return View(visits);
         }
 
-        // GET: Pets/Edit/5
+        // GET: Visits/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pet pet = db.Pets.Find(id);
-            if (pet == null)
+            Visits visits = db.Visits.Find(id);
+            if (visits == null)
             {
                 return HttpNotFound();
             }
-            return View(pet);
+            ViewBag.petID = new SelectList(db.Pets, "petID", "firstName", visits.petID);
+            ViewBag.vetID = new SelectList(db.Vets, "vetID", "firstName", visits.vetID);
+            return View(visits);
         }
 
-        // POST: Pets/Edit/5
+        // POST: Visits/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "petID,firstName,lastName")] Pet pet)
+        public ActionResult Edit([Bind(Include = "visitId,vetID,petID,dateTime,description")] Visits visits)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pet).State = EntityState.Modified;
+                db.Entry(visits).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(pet);
+            ViewBag.petID = new SelectList(db.Pets, "petID", "firstName", visits.petID);
+            ViewBag.vetID = new SelectList(db.Vets, "vetID", "firstName", visits.vetID);
+            return View(visits);
         }
 
-        // GET: Pets/Delete/5
+        // GET: Visits/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pet pet = db.Pets.Find(id);
-            if (pet == null)
+            Visits visits = db.Visits.Find(id);
+            if (visits == null)
             {
                 return HttpNotFound();
             }
-            return View(pet);
+            return View(visits);
         }
 
-        // POST: Pets/Delete/5
+        // POST: Visits/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Pet pet = db.Pets.Find(id);
-            db.Pets.Remove(pet);
+            Visits visits = db.Visits.Find(id);
+            db.Visits.Remove(visits);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
