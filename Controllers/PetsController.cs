@@ -18,7 +18,8 @@ namespace cn894815_mis4200.Controllers
         // GET: Pets
         public ActionResult Index()
         {
-            return View(db.Pets.ToList());
+            var pets = db.Pets.Include(p => p.Owner);
+            return View(pets.ToList());
         }
 
         // GET: Pets/Details/5
@@ -39,6 +40,7 @@ namespace cn894815_mis4200.Controllers
         // GET: Pets/Create
         public ActionResult Create()
         {
+            ViewBag.ownerID = new SelectList(db.Owners, "ownerID", "firstName");
             return View();
         }
 
@@ -56,6 +58,7 @@ namespace cn894815_mis4200.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ownerID = new SelectList(db.Owners, "ownerID", "firstName", pet.ownerID);
             return View(pet);
         }
 
@@ -71,6 +74,7 @@ namespace cn894815_mis4200.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ownerID = new SelectList(db.Owners, "ownerID", "firstName", pet.ownerID);
             return View(pet);
         }
 
@@ -79,7 +83,7 @@ namespace cn894815_mis4200.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "petID,firstName,lastName")] Pet pet)
+        public ActionResult Edit([Bind(Include = "petID,firstName,lastName,birthday,weight,breed,ownerID")] Pet pet)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +91,7 @@ namespace cn894815_mis4200.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ownerID = new SelectList(db.Owners, "ownerID", "firstName", pet.ownerID);
             return View(pet);
         }
 
