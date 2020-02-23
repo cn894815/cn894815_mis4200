@@ -59,8 +59,8 @@ namespace cn894815_mis4200.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.petID = new SelectList(db.Pets, "petID", "firstName", visits.petID);
-            ViewBag.vetID = new SelectList(db.Vets, "vetID", "firstName", visits.vetID);
+            ViewBag.petID = new SelectList(db.Pets, "petID", "fullName", visits.petID);
+            ViewBag.vetID = new SelectList(db.Vets, "vetID", "fullName", visits.vetID);
             return View(visits);
         }
 
@@ -76,8 +76,8 @@ namespace cn894815_mis4200.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.petID = new SelectList(db.Pets, "petID", "firstName", visits.petID);
-            ViewBag.vetID = new SelectList(db.Vets, "vetID", "firstName", visits.vetID);
+            ViewBag.petID = new SelectList(db.Pets, "petID", "fullName", visits.petID);
+            ViewBag.vetID = new SelectList(db.Vets, "vetID", "fullName", visits.vetID);
             return View(visits);
         }
 
@@ -94,8 +94,8 @@ namespace cn894815_mis4200.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.petID = new SelectList(db.Pets, "petID", "firstName", visits.petID);
-            ViewBag.vetID = new SelectList(db.Vets, "vetID", "firstName", visits.vetID);
+            ViewBag.petID = new SelectList(db.Pets, "petID", "fullName", visits.petID);
+            ViewBag.vetID = new SelectList(db.Vets, "vetID", "fullName", visits.vetID);
             return View(visits);
         }
 

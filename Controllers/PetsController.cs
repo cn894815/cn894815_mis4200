@@ -58,7 +58,7 @@ namespace cn894815_mis4200.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ownerID = new SelectList(db.Owners, "ownerID", "firstName", pet.ownerID);
+            ViewBag.ownerID = new SelectList(db.Owners, "ownerID", "fullName", pet.ownerID);
             return View(pet);
         }
 
@@ -74,7 +74,7 @@ namespace cn894815_mis4200.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ownerID = new SelectList(db.Owners, "ownerID", "firstName", pet.ownerID);
+            ViewBag.ownerID = new SelectList(db.Owners, "ownerID", "fullName", pet.ownerID);
             return View(pet);
         }
 
@@ -91,7 +91,7 @@ namespace cn894815_mis4200.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ownerID = new SelectList(db.Owners, "ownerID", "firstName", pet.ownerID);
+            ViewBag.ownerID = new SelectList(db.Owners, "ownerID", "fullName", pet.ownerID);
             return View(pet);
         }
 
