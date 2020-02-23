@@ -40,7 +40,7 @@ namespace cn894815_mis4200.Controllers
         // GET: Pets/Create
         public ActionResult Create()
         {
-            ViewBag.ownerID = new SelectList(db.Owners, "ownerID", "firstName");
+            ViewBag.ownerID = new SelectList(db.Owners, "ownerID", "fullName");
             return View();
         }
 

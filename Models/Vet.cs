@@ -9,6 +9,7 @@ namespace cn894815_mis4200.Models
     public class Vet
     {
         public int vetID { get; set; }
+        public string fullName { get { return lastName + ", " + firstName; } }
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "Pet Name is Required")]
         [StringLength(20)]

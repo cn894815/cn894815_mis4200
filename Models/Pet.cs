@@ -8,9 +8,10 @@ namespace cn894815_mis4200.Models
 {
     public class Pet
     {
-        //[Key]public System.Guid petID { get; set; }
 
-        [Key]public int petId { get; set; }
+        public int petID { get; set; }
+
+        public string fullName { get { return lastName + ", " + firstName; } }
 
         [Display(Name = "First Name")]
         [Required(ErrorMessage ="Pet Name is Required")]
@@ -26,7 +27,8 @@ namespace cn894815_mis4200.Models
         public DateTime birthday { get; set; }
         [Display(Name = "Weight")]
         [Required(ErrorMessage = "weight needs to be input as a decimal (###.##")]
-        public decimal weight { get; set; }
+        [StringLength(20)]
+        public string weight { get; set; }
         [Display(Name = "Breed of Pet")]
         [Required]
         [StringLength(20)]

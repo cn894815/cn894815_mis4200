@@ -13,7 +13,9 @@ namespace cn894815_mis4200.Models
     {
 
 //[Key]public System.Guid ownerId { get; set; }
-        [Key]public int ownerId { get; set; }
+        [Key]public int ownerID { get; set; }
+
+        public string fullName { get { return lastName + "," + firstName; } }
 
         [Display(Name = "First Name")]
         [Required(ErrorMessage ="First name is required")]

@@ -10,6 +10,8 @@ namespace cn894815_mis4200.Models
     {
         [Key] public int visitId { get; set; }
 
+        
+
         public int vetID { get; set; }
 
         public virtual Vet Vet { get; set; }
