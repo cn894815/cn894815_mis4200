@@ -34,7 +34,7 @@ namespace cn894815_mis4200.Models
         [RegularExpression(@"^(\(\d{3}\) |\d{3}-)\d{3}-\d{4}$",
             ErrorMessage ="Phone number must be in (xxx) xxx-xxxx or xxx-xxx-xxx")]
         public string phone { get; set; }
-        [Display(Name = "When did you become a vet")]
+        [Display(Name = "When did you become a owner")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> customerSince { get; set; }

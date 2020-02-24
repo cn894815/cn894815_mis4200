@@ -19,8 +19,11 @@ namespace cn894815_mis4200.Models
         public int petID { get; set; }
 
         public virtual Pet Pet { get; set; }
-
+        [Display(Name = "Date of Visit")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime dateTime { get; set; }
+       
         public string description { get; set; }
     }
 }
